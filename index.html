@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos</title>
+  <style>
+    /* Reset básico */
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilo do cabeçalho */
+    header {
+      background-color: #1d44b8;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    /* Botão para adicionar novos projetos */
+    .add-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: white;
+      color: #1d44b8;
+      border: 1px solid #1d44b8;
+      border-radius: 4px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .add-btn:hover {
+      background-color: #163a8e;
+      color: white;
+    }
+
+    /* Estilo do layout principal */
+    main {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* Estilo dos cards */
+    .project-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .project-card h2 {
+      color: #1d44b8;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #1d44b8;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #163a8e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://app.acessorias.com/_assets/login/images/logos/logo.svg" alt="Logo">
+    <button class="add-btn" onclick="addNewProject()">Adicionar Projeto</button>
+  </header>
+  <main>
+    <section id="project-grid">
+      <div class="project-card">
+        <h2>Comparador de Clientes</h2>
+        <p>Comparador feito para validar quais clientes estão sem atividade.</p>
+        <a href="https://itallopureza.github.io/comparadoCSV_JS/" target="_blank" class="btn">Acessar</a>
+      </div>
+      <div class="project-card">
+        <h2>Validação de Responsabilidades</h2>
+        <p>Projeto voltado para validar se as atividades criadas estão com os analistas corretos no Pipefy.</p>
+        <a href="https://itallopureza.github.io/comparadorResponsabilidade/" target="_blank" class="btn">Acessar</a>
+      </div>
+      <div class="project-card">
+        <h2>Validação de Tickets</h2>
+        <p>Projeto feito para validar quais tickets de tentativa de contato foram abertos fora do processo.</p>
+        <a href="https://itallopureza.github.io/Tickets/" target="_blank" class="btn">Acessar</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    function addNewProject() {
+      const title = prompt("Digite o título do novo projeto:");
+      const description = prompt("Digite a descrição do novo projeto:");
+      const url = prompt("Digite a URL do novo projeto:");
+
+      if (title && description && url) {
+        const grid = document.getElementById("project-grid");
+
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.innerHTML = `
+          <h2>${title}</h2>
+          <p>${description}</p>
+          <a href="${url}" target="_blank" class="btn">Acessar</a>
+        `;
+
+        grid.appendChild(card);
+        alert("Projeto adicionado com sucesso!");
+      } else {
+        alert("Todos os campos são obrigatórios!");
+      }
+    }
+  </script>
+</body>
+</html>
